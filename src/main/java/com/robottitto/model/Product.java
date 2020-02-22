@@ -6,21 +6,24 @@ public class Product implements Serializable {
 
     private int id;
     private String name;
+    private String description;
     private double price;
     private int quantity;
 
     public Product() {
     }
 
-    public Product(int id, String description, double price) {
+    public Product(int id, String name, String description, double price) {
         this.id = id;
-        this.name = description;
+        this.name = name;
+        this.description = description;
         this.price = price;
     }
 
-    public Product(int id, String description, double price, int quantity) {
+    public Product(int id, String name, String description, double price, int quantity) {
         this.id = id;
-        this.name = description;
+        this.name = name;
+        this.description = description;
         this.price = price;
         this.quantity = quantity;
     }
@@ -39,6 +42,14 @@ public class Product implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public double getPrice() {
@@ -62,9 +73,9 @@ public class Product implements Serializable {
         return "Product{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
                 '}';
     }
-
 }

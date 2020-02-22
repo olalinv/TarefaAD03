@@ -116,6 +116,9 @@ public class Main {
                     System.out.println("Introduza o nome do produto:");
                     String enterProductName = scanner.nextLine();
                     product.setName(enterProductName);
+                    System.out.println("Introduza a descrición do produto:");
+                    String enterProductDescription = scanner.nextLine();
+                    product.setDescription(enterProductDescription);
                     System.out.println("Introduza o prezo do produto:");
                     double enterProductPrice = Double.parseDouble(scanner.nextLine());
                     product.setPrice(enterProductPrice);
@@ -133,7 +136,7 @@ public class Main {
                         List<Product> products = ProductRepository.getProducts();
                         System.out.println("Lista de produtos:");
                         for (Product p : products) {
-                            System.out.printf("Id: %d Nome: %s Prezo: %f%n", p.getId(), p.getName(), p.getPrice());
+                            System.out.printf("Id: %d Nome: %s Descrición: %s Prezo: %f%n", p.getId(), p.getName(), p.getDescription(), p.getPrice());
                         }
                     } catch (SQLException e) {
                         e.printStackTrace();

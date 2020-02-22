@@ -20,6 +20,7 @@ public class ProductDAO {
             Product product = new Product(
                     rs.getInt("PRODUCT_ID"),
                     rs.getString("NAME"),
+                    rs.getString("DESCRIPTION"),
                     rs.getFloat("PRICE")
             );
             products.add(product);
@@ -38,6 +39,7 @@ public class ProductDAO {
             Product product = new Product(
                     rs.getInt("PRODUCT_ID"),
                     rs.getString("NAME"),
+                    rs.getString("DESCRIPTION"),
                     rs.getFloat("PRICE"),
                     rs.getInt("PR_QUANTITY")
             );
@@ -56,17 +58,19 @@ public class ProductDAO {
         while (rs.next()) {
             product.setId(rs.getInt("PRODUCT_ID"));
             product.setName(rs.getString("NAME"));
+            product.setDescription(rs.getString("DESCRIPTION"));
             product.setPrice(rs.getDouble("PRICE"));
         }
         return product;
     }
 
     public static void addProduct(Product product) throws SQLException, FileNotFoundException {
-        String sql = "INSERT INTO PRODUCT(NAME, PRICE) VALUES(?, ?)";
+        String sql = "INSERT INTO PRODUCT(NAME, DESCRIPTION, PRICE) VALUES(?, ?, ?)";
         Connection connection = DBUtils.connect();
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setString(1, product.getName());
-        pstmt.setDouble(2, product.getPrice());
+        pstmt.setString(2, product.getDescription());
+        pstmt.setDouble(3, product.getPrice());
         pstmt.executeUpdate();
     }
 
